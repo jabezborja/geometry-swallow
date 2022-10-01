@@ -84,7 +84,7 @@ const gameInstance = () => {
     canvas.width = 1000;
     canvas.height = 600;
 
-    const game = new Game(canvas);
+    const game = new Game();
     const controller = new InputHandler(game.player);
     controller.initializeController();
 

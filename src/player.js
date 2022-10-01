@@ -43,14 +43,17 @@ export class Player {
         this.game.obstacles.forEach((obstacle) => {
             var diffX = obstacle.position.x - this.position.x;
 
-            // Has collided with obsta
+            // Has collided with an obstacle
             if (diffX <= obstacle.width
                 && diffX >= -20
                 && this.position.y - this.game.height >= -obstacle.height) {
 
                 this.game.hasLost = true;
                 return;
-            } else if (diffX <= obstacle.width && diffX >= -20) {
+            }
+            
+            // Has successfully avoided an obstacle
+            if (diffX <= obstacle.width && diffX >= -20) {
                 if (!this.earnPointsDebounce) {
                     this.earnPointsDebounce = true;
                     setTimeout(() => { this.earnPointsDebounce = false }, 1000);
@@ -61,7 +64,6 @@ export class Player {
                     }
                 }
             }
-
             
         });
     }
